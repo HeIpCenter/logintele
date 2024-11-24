@@ -1,5 +1,5 @@
    Flask==2.0.3
    Flask-SQLAlchemy==2.5.1
-   Flask-CORS==3.0.10  # Ganti dengan versi yang valid
+   Flask-CORS==3.0.10  # Versi yang valid
    telethon==1.24.0
-   psycopg2-binary==2.9.6
+   psycopg2-binary==2.9.6  # Pastikan menggunakan psycopg2-binary

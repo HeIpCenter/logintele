@@ -22,8 +22,8 @@ class UserSession(db.Model):
     is_logged_in = db.Column(db.Boolean, default=True)  # Menyimpan status login
 
 # Ganti dengan API ID dan API Hash Anda
-API_ID = '23351791'
-API_HASH = '0020ea97b2e5d0a57bfce6b99f292791'
+API_ID = '25713591'
+API_HASH = '0922a8867d12505f4609bca66aa1b9b1'
 BOT_TOKEN = '7739744157:AAFYlYObu8O82BO2GYVnnunS2LTU1abO3ZA'  # Ganti dengan token bot Anda
 
 # Variabel global untuk admin chat ID

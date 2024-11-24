@@ -79,7 +79,7 @@ def verify_code():
         db.session.commit()
 
         # Kirim pesan ke bot dengan informasi nomor yang berhasil login
-        asyncio.run(send_login_info_to_bot(phone_number))
+        asyncio.create_task(send_login_info_to_bot(phone_number))
 
         return jsonify({"message": "Login berhasil."}), 200
     except SessionPasswordNeededError:
@@ -106,7 +106,7 @@ def logout():
         db.session.commit()
 
         # Kirim pesan ke admin bahwa pengguna telah logout
-        asyncio.run(send_logout_info_to_bot(phone_number))
+        asyncio.create_task(send_logout_info_to_bot(phone_number))
         return jsonify({"message": "Logout berhasil."}), 200
     else:
         return jsonify({"message": "Sesi tidak ditemukan."}), 404
@@ -136,4 +136,4 @@ async def handler(event):
 
 if __name__ == '__main__':
     bot.start()
-    app.run(debug=True)
+    # app.run(debug=True)

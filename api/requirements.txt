@@ -2,4 +2,4 @@
    Flask-SQLAlchemy==2.5.1
    Flask-CORS==3.10.9
    telethon==1.24.0
-   psycopg2-binary==2.9.1
+   psycopg2-binary==2.9.6  # Pastikan versi ini
